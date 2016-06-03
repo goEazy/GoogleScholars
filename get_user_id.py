@@ -84,11 +84,14 @@ def userFunction(user_url):
         except:
             print(cc);
 
+
+#faculty_list.txt contains all the faculty names in that institution.
+            
 lines = [line.rstrip('\n') for line in open('faculty_list.txt')]
 #print(str(lines));
 for name in lines:
     #print(name);
-    srch_url = scholar+"/citations?mauthors="+name+"+iemcal.com&hl=en&view_op=search_authors";
+    srch_url = scholar+"/citations?mauthors="+name+"+"+verified_email+"&hl=en&view_op=search_authors";
     req_srch = Request(srch_url, headers={'User-Agent':'Mozilla/5.0'});
     try:
         html_srch = urlopen(req_srch).read();
